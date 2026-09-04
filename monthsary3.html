@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Happy Third Monthsary</title>
+        <style>
+            :root { --berry: #9d3152; --rose: #f6a6b8; --cream: #fff8f2; --ink: #54263a; }
+            * { box-sizing: border-box; }
+            body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 2rem 1.25rem; color: var(--ink); font-family: Georgia, 'Times New Roman', serif; background: radial-gradient(circle at 12% 18%, #fff8f2 0 8%, transparent 9%), radial-gradient(circle at 88% 80%, #fbd0d4 0 9%, transparent 10%), #ffe3e5; }
+            .h { width: min(720px, 100%); padding: clamp(2rem, 6vw, 4rem); text-align: center; border: 1px solid #f2bdc5; border-radius: 20px; background: rgba(255,248,242,.9); box-shadow: 0 18px 45px rgba(157,49,82,.15); }
+            .kicker { color: var(--berry); letter-spacing: .18em; text-transform: uppercase; font: 700 .75rem Arial, sans-serif; }
+            h1 { margin: .8rem 0 1rem; color: var(--berry); font-size: clamp(2.25rem, 7vw, 4.8rem); line-height: .98; }
+            h3 { margin: 0 auto 2rem; max-width: 520px; font-size: 1.2rem; font-weight: normal; line-height: 1.5; }
+            ul { display: grid; gap: .8rem; margin: 0 0 2rem; padding: 0; list-style: none; text-align: left; }
+            li { padding: 1rem 1.1rem; border-radius: 10px; background: #fff; line-height: 1.4; }
+            li::before { content: '\2665'; margin-right: .7rem; color: var(--rose); }
+            #butt { display: block; margin: 0 auto; padding: 1rem 2rem; border: 0; border-radius: 999px; color: #fff; background: var(--berry); cursor: pointer; font: 700 1rem Arial, sans-serif; box-shadow: 0 10px 22px rgba(157,49,82,.22); transition: transform .2s ease, background .2s ease; }
+            #butt:hover, #butt:focus-visible { transform: translateY(-3px); background: #76213d; }
+        </style>
+    </head>
+    <body>
+        <main class="h">
+            <div class="kicker">I love you super duper muchh</div>
+            <h1>Happy third monthsary, misis koo</h1>
+            <h3>Since third monthsary na natin, here are three little things I love about you.</h3>
+            <ul>
+                <li>Your smile</li>
+                <li>Your kisses</li>
+                <li>Uhh idk idk</li>
+            </ul>
+            <button id="butt" type="button">Oh, woww</button>
+        </main>
+
+        <script>
+            document.getElementById('butt').addEventListener('click', function () {
+                    var nextPage = '100reasons.html';
+                var fullscreenRequest = document.documentElement.requestFullscreen
+                    ? document.documentElement.requestFullscreen()
+                    : Promise.resolve();
+
+                fullscreenRequest.catch(function () {}).finally(function () {
+                    window.location.href = nextPage;
+                });
+            });
+        </script>
+        
+    </body>
+</html>
