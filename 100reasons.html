@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 Reasons I Love You</title>
+    <style>
+        :root { --berry: #9d3152; --rose: #f6a6b8; --cream: #fff8f2; --ink: #54263a; }
+        * { box-sizing: border-box; }
+        body { margin: 0; min-height: 100vh; color: var(--ink); font-family: Georgia, 'Times New Roman', serif; background: #ffe3e5; overflow-x: hidden; }
+        body::before, body::after { position: fixed; z-index: -1; color: rgba(157, 49, 82, .13); font-size: 8rem; pointer-events: none; }
+        body::before { content: '\2665'; top: 3vh; left: 4vw; transform: rotate(-18deg); }
+        body::after { content: '\2665'; right: 4vw; bottom: 2vh; transform: rotate(18deg); }
+        .intro { min-height: 100vh; display: grid; place-items: center; padding: 2rem; text-align: center; }
+        .intro-inner { max-width: 720px; }
+        .eyebrow { color: var(--berry); letter-spacing: .18em; text-transform: uppercase; font: 700 .78rem/1.4 Arial, sans-serif; }
+        h1 { margin: .7rem 0 1rem; color: var(--berry); font-size: clamp(2.4rem, 7vw, 5.2rem); line-height: .98; }
+        .intro p { margin: 0 auto 2rem; font-size: 1.25rem; }
+        button { display: block; margin: 0 auto; border: 0; border-radius: 999px; padding: 1rem 2rem; color: white; background: var(--berry); box-shadow: 0 10px 25px rgba(157,49,82,.25); cursor: pointer; font: 700 1rem Arial, sans-serif; transition: transform .2s ease, background .2s ease; }
+        button:hover, button:focus-visible { background: #76213d; transform: translateY(-3px) scale(1.03); }
+        .reasons-page { display: none; max-width: 1120px; margin: auto; padding: 4rem 1.25rem 5rem; }
+        .reasons-page.visible { display: block; animation: appear .7s ease both; }
+        .heading { text-align: center; }
+        .heading h2 { margin: .5rem 0; color: var(--berry); font-size: clamp(2rem, 5vw, 4rem); }
+        .heading p { font-size: 1.15rem; }
+        .reasons { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 2.5rem; }
+        .reason { min-height: 125px; padding: 1.25rem; border: 1px solid #f2bdc5; border-radius: 14px; background: rgba(255,248,242,.86); box-shadow: 0 8px 18px rgba(157,49,82,.08); }
+        .reason strong { display: block; margin-bottom: .55rem; color: var(--berry); font: 700 1.35rem Arial, sans-serif; }
+        .reason p { margin: 0; line-height: 1.45; }
+        @keyframes appear { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    </style>
+</head>
+<body>
+    <main class="intro" id="intro">
+        <div class="intro-inner">
+            <div class="eyebrow"></div>
+            <h1>You really thought I only had three reasons to love you?</h1>
+            <p></p>
+            <button id="open-reasons" type="button">Uh, yes?</button>
+        </div>
+    </main>
+    <section class="reasons-page" id="reasons-page" aria-live="polite">
+        <div class="heading">
+            <div class="eyebrow">HAPPY THIRD MONTHSARYYY, MISIS KOO</div>
+            <h2>100 reasons why I love you</h2>
+            <p>And somehow, this list still does not fit everything I feel.</p>
+        </div>
+        <div class="reasons" id="reasons"></div>
+    </section>
+    <script>
+        const reasons = [
+            'When i see your smile sa mga pics mo, gumagaan pakiramdam ko.', 'Pinapatawa moko when I need it most.', 'You always listen to me when i yap.', 'Cino-comfort moko whenenver Im sad.', 'You are WONDERFULL.',
+            'You make my heart feel safe.', 'Your kindness makes me wanna marry you.', 'You believe in me.', 'You make every day better whenever we talk.', 'You are my favorite notification.',
+            'Naalala mo lahat, even the smallest details.', 'Nagiging comfortable ako even when we are being silent lang.', 'You js make my eyes lit up when you talk sweet.', 'You are VERYYYY patient with me.', 'You make me want to be better.',
+            'Alam na alam mo kung paano ako i-cheer up.', 'Your voice is my favorite sound kahit na barely ka mag send ng vms.', 'You make time feel too fast pag nag uusap tayo.', 'Sobrang honest mo and i genuinely love it.', 'You make me feel chosennn aehehaashdaduah.',
+            'Cine-celebrate mo yung mga small wins ko with me', 'You never make me feel alone :p', 'You are just SOOOSOSO beautiful.', 'Whenever im talking bad to myself, cino=compliment mo ako hehehehshasdhashd', 'YOU MAKE ME FEEL LIKE I BELONGGGG!!1!111!',
+            'You protect me sa mga friends mo.', 'You make me feel understooddd.', 'You ALWAYS support my dreams.', 'Pinapagaan mo pakiramdam ko whenever Im stressedd.', 'ANG GANDA GANDA MOOO.. Mapa inside man yan or outside.',
+            'You highkey make me proud to love you.', 'You always try your best. and i love you for that baby :D', 'You make home feel like a person.', 'You always over apologize even though di naman big deal. ;-;', 'I LOVEVEEVEV HAVING LATE NIGHT CONVERSATIONS WITH YOUUU. HEHSHSESHADHAWDUASHD',
+            'You GENUINELY make me feel lucky.', 'You reallyy make mee feel like I matterrr.', 'EVERY TIME NA GINAGAWA MOKONG BABY', 'Pinapaliit mo palagi yung mga worries ko.', 'You are easy to miss when away huhu.',
+            'You make every month WORTHH celebratingg.', 'Hello mo palang, kinikilig nako', 'You make my future feel bright.', 'The way you call me names like bro, baby, asawa ko, and daddy lmao.', 'You are gentle with my feelings.',
+            'Ginagawa mo lahat just to make me happyy.', 'YOU MAKE LOVING ME FEEL EASYY, WHATTT.', 'You are my favorite teammate sa ml.', 'The way you have deep talks with me whenever i need you, herhehadshawudasdp marry me baby.', 'You make my heart do tricks, HASHADHASDHAH.',
+            'YOU ARE ENDLESSLY LOVEABLEEEE.', 'You make me feel seen(literally sometimes kasi sineseen mo lang talaga ako).', 'Meron kang beautiful way of caring.', 'You make rainy days cozy, hawusdhawhda.', 'You are my BESTT kind of distraction.',
+            'You GENUINELY make me excited for tomorrow.', 'You bring out my couragee :ppp', 'THE WAY YOU SPAM ME REELS ON IGG', 'The way you say good morning.', 'You make me feel at peace smmm',
+            'You make me feel comfortable, i love you sm.', 'You make my world more colorfullll.', 'You know how to make me blush LIKE ACTUALLYY.', 'You are SOOOSOSOSOSOSO dependable.', 'THE WAY YOU REPLY TO MY REPOSTS ON IGG, I LOVE ITTTT.',
+            'You make me feel sooo appreciated.', 'You would rather spend your time with me over someone else.', 'You have a heart I admire.', 'You make me want to share literally EVERYTHING.', 'You are my favorite person to celebrate, hehsheshadsawudahsd.',
+            'Whenever you add letters to every sentences', 'You are worth every love song.', 'You make me feel precious.', 'You are my sweetest comfort.', 'You make my dreams feel possible.',
+            'THE WAY YOU NOTICE WHEN SOMETHING IS WRONG. I LOVE YOU SO MUCHH', 'The way you always say you wanna marry me or wanna remarry me.', 'The way you tell me you miss me', 'Every time you spam me with message whenever Im busy with something', 'The way you are full of lovely surprises.',
+            'Every time you say you love me more(I love you more btw)', 'Every time na nag o-overthink ako, you always reassure me.', 'The way you make me soosososo obsessed with you', 'The way you make me feel like I am the most important person in your life', 'You make my heart feel full.',
+            'You are caring without needing praise.', 'You make new memories easy.', 'You are my favorite person to miss.', 'You make my life sweeter.', 'You are always worth choosing.',
+            'YOU ALSO MAKE MY BAD JOKES FEEL SO FUNNY, IM CRINE.', 'The way you make me jealous whenver you mention literally anyone. hahahshasd', 'YOU MAKE LOVE FEEL LIKE FRIENDSHIP TOO OML', 'The way you include me in your dreamss, paldo', 'You make me wanna cry when youre away.',
+            'The way you reply soososo quick.', 'You make every little thing MATTER.', 'You have my whole heart.', 'You make forever sound lovely.', 'I love you because you are you.'
+        ];
+        const list = document.getElementById('reasons');
+        reasons.forEach((reason, index) => { list.insertAdjacentHTML('beforeend', `<article class="reason"><strong>${index + 1}</strong><p>${reason}</p></article>`); });
+        document.getElementById('open-reasons').addEventListener('click', async () => {
+            try { if (document.documentElement.requestFullscreen) await document.documentElement.requestFullscreen(); } catch (error) { /* Fullscreen may be blocked by browser settings. */ }
+            document.getElementById('intro').style.display = 'none';
+            document.getElementById('reasons-page').classList.add('visible');
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+</html>
